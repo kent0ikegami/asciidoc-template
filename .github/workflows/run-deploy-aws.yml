@@ -31,7 +31,7 @@ jobs:
           path: dist/
 
   deploy:
-    needs: doc_build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       # ビルド結果をダウンロード
