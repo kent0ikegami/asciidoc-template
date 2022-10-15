@@ -24,7 +24,7 @@
     "ja-no-inappropriate-words": true,
     "prh": {
       "rulePaths": [
-        "WEB+DB_PRESS+JCA.yml"
+        "resources/WEB+DB_PRESS+JCA.yml"
       ]
     }
   },
