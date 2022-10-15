@@ -1,4 +1,4 @@
-
+test
 # asciidoc-template
 
 Asciidoc を使った仕様書の構成管理・CI/CD環境の雛形です。
