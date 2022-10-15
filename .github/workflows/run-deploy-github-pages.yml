@@ -1,5 +1,5 @@
 name: run-deploy-github-pages
-# developまたはmainブランチへ Pull Request がマージされた時のみ実行
+# developまたはmainブランチへ Pull Request がマージされた時のみ実行。
 on:
   pull_request:
     branches: [ develop, main ]
@@ -28,8 +28,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: true
-      # 以下はrelease/x.y.zブランチをmainにマージした時のみ
-      # mainブランチにタグx.y.zを打つ
+      # 以下はrelease/x.y.zブランチをmainにマージした時のみ。
+      # mainブランチにタグx.y.zを打つ。
       - name: Create tag
         id: create-tag
         if: github.base_ref == 'main' && startsWith(github.head_ref, 'release')
@@ -37,7 +37,7 @@ jobs:
           TAG_NAME=$(echo ${{ github.head_ref }} | sed 's/release\///')
           echo "::set-output name=tag-name::${TAG_NAME}"
           echo $TAG_NAME
-      # 作成した HTML と PDF を GitHub Pages の./x.y.z以下にデプロイする
+      # 作成した HTML と PDF を GitHub Pages の./x.y.z以下にデプロイする。
       - name: Publish versioned
         uses: peaceiris/actions-gh-pages@v3
         if: github.base_ref == 'main' && startsWith(github.head_ref, 'release')
@@ -46,7 +46,7 @@ jobs:
           publish_dir: ./dist
           destination_dir: ${{ steps.create-tag.outputs.tag-name }}
           keep_files: true
-      # 作成した HTML と PDF を GitHub の Releases にアップロードする
+      # 作成した HTML と PDF を GitHub の Releases にアップロードする。
       - name: Create release
         if: github.base_ref == 'main' && startsWith(github.head_ref, 'release')
         uses: softprops/action-gh-release@v1
